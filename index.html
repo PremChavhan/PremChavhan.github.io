@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <head>
+        <style>
+            /* montserrat-regular - latin */
+            @font-face {
+                font-family: 'Montserrat';
+                font-style: normal;
+                font-weight: 400;
+                src: url('./fonts/montserrat-v14-latin-regular.eot'); /* IE9 Compat Modes */
+                src: local('Montserrat Regular'), local('Montserrat-Regular'),
+                url('./fonts/montserrat-v14-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+                url('./fonts/montserrat-v14-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+                url('./fonts/montserrat-v14-latin-regular.woff') format('woff'), /* Modern Browsers */
+                url('./fonts/montserrat-v14-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+                url('./fonts/montserrat-v14-latin-regular.svg#Montserrat') format('svg'); /* Legacy iOS */
+            }
+
+            ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+                background-color: #333;
+            }
+
+            li {
+                float: left;
+            }
+
+            li a {
+                display: flow;
+                color: white;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+            }
+
+            li a:hover {
+                background-color: #111;
+            }
+
+            .wrapper {
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(27deg,#414a4c,#3b444b,#353839,#232b2b,#0e1111);
+                background-size: 500% 100%;
+                -webkit-animation: Gradient 10s ease infinite;
+                -moz-animation: Gradient 10s ease infinite;
+                animation: Gradient 10s ease infinite;
+            }
+
+            @-webkit-keyframes Gradient {
+                0%{background-position:0 50%}
+                50%{background-position:100% 50%}
+                100%{background-position:0 50%}
+            }
+
+            @-moz-keyframes Gradient {
+                0%{background-position:0 50%}
+                50%{background-position:100% 50%}
+                100%{background-position:0 50%}
+            }
+
+            @keyframes Gradient {
+                0%{background-position:0 50%}
+                50%{background-position:100% 50%}
+                100%{background-position:0 50%}
+            }
+
+            .image--cover {
+                width: 150px;
+                height: 150px;
+                border-radius: 50%;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                padding-top: 20px;
+                padding-bottom: 20px;
+                alignment: center;
+                object-fit: cover;
+            }
+
+            html,body {
+                font-family: 'Raleway', sans-serif;
+                font-size: 18px;
+                background: #222;
+                color: #aaa;
+            }
+
+            h1,h2 {
+                font-weight: 200;
+                margin: 0.4em 0;
+            }
+
+            h1 { font-size: 3.5em; }
+
+            h2 {
+                color: #aaa;
+                font-size: 2em;
+            }
+            .flip-box {
+                background-color:transparent;
+                width: 315px;
+                height: 260px;
+                border: 0px solid #ffffff;
+                perspective: 1000px;
+            }
+
+            .flip-box-inner {
+                position: relative;
+                width: 100%;
+                height: 100%;
+                text-align: center;
+                transition: transform 0.8s;
+                transform-style: preserve-3d;
+            }
+
+            .flip-box:hover .flip-box-inner {
+                transform: rotateY(180deg);
+            }
+
+            .flip-box-front, .flip-box-back {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                -webkit-backface-visibility: hidden;
+                backface-visibility: hidden;
+            }
+
+            .flip-box-front {
+                float:left;
+                width:25%;
+                height:280px;
+                background-color: #bbb;
+                color: black;
+            }
+
+            .flip-box-back {
+                color: white;
+                transform: rotateY(180deg);
+            }
+
+
+            .col_third { width: 32%; }
+
+            .col_third,
+            .col_twothird,
+            .col_fourth,
+            .col_three_fourth,
+            .col_fifth{
+                position: relative;
+                display:inline;
+                display: inline-block;
+                float: left;
+                margin-right: 2%;
+                margin-bottom: 20px;
+            }
+            .end { margin-right: 0 !important; }
+
+            /*-=-=-=-=-=-=-=-=-=-=- */
+            /* Flip Panel */
+            /*-=-=-=-=-=-=-=-=-=-=- */
+
+
+            .wrapper{ width: 980px; margin: 0 auto;  background-color: #bdd3de; hoverflow: hidden;}
+
+            .panel {
+                margin: 0 auto;
+                height: 130px;
+                position: relative;
+                -webkit-perspective: 600px;
+                -moz-perspective: 600px;
+            }
+
+            .panel .front,
+            .panel .back {
+                text-align: center;
+            }
+
+            .panel .front {
+                height: inherit;
+                position: absolute;
+                top: 0;
+                z-index: 900;
+                text-align: center;
+                -webkit-transform: rotateX(0deg) rotateY(0deg);
+                -moz-transform: rotateX(0deg) rotateY(0deg);
+                -webkit-transform-style: preserve-3d;
+                -moz-transform-style: preserve-3d;
+                -webkit-backface-visibility: hidden;
+                -moz-backface-visibility: hidden;
+                -webkit-transition: all .4s ease-in-out;
+                -moz-transition: all .4s ease-in-out;
+                -ms-transition: all .4s ease-in-out;
+                -o-transition: all .4s ease-in-out;
+                transition: all .4s ease-in-out;
+            }
+
+            .panel .back {
+                height: inherit;
+                position: absolute;
+                top: 0;
+                z-index: 1000;
+                -webkit-transform: rotateY(-180deg);
+                -moz-transform: rotateY(-180deg);
+                -webkit-transform-style: preserve-3d;
+                -moz-transform-style: preserve-3d;
+                -webkit-backface-visibility: hidden;
+                -moz-backface-visibility: hidden;
+                -webkit-transition: all .4s ease-in-out;
+                -moz-transition: all .4s ease-in-out;
+                -ms-transition: all .4s ease-in-out;
+                -o-transition: all .4s ease-in-out;
+                transition: all .4s ease-in-out;
+            }
+            .panel.flip .front {
+                z-index: 900;
+                -webkit-transform: rotateY(180deg);
+                -moz-transform: rotateY(180deg);
+            }
+            .panel.flip .back {
+                z-index: 1000;
+                -webkit-transform: rotateX(0deg) rotateY(0deg);
+                -moz-transform: rotateX(0deg) rotateY(0deg);
+            }
+            .tooltip {
+                position: relative;
+                display: inline-block;
+                border-bottom: 0px dotted black;
+                margin-left: 10px;
+                margin-right: 10px;
+            }
+
+            /* Tooltip text */
+            .tooltip .tooltiptext {
+                visibility: hidden;
+                background-color: transparent;
+                color: #fff;
+                font-size: small;
+                text-align: center;
+                padding: 5px 0;
+                border-radius: 6px;
+                width: 120px;
+                bottom: 100%;
+                left: 50%;
+                margin-left: -60px;
+                /* Position the tooltip text - see examples below! */
+                position: absolute;
+                z-index: 1;
+                opacity: 0;
+                transition: opacity 2s;
+            }
+
+            /* Show the tooltip text when you mouse over the tooltip container */
+            .tooltip:hover .tooltiptext {
+                visibility: visible;
+                opacity: 1;
+            }
+
+            .divLeft {
+                width:100px;
+                display:inline-block;
+                float: left;
+                margin-left: 150px;
+            }
+            .divRight {
+                width:100px;
+                display:inline-block;
+                float: right;
+                margin-right: 40px;
+            }
+
+            .social-icons li {
+                display: inline-block;
+                margin-bottom: 5px;
+                vertical-align: middle;
+            }
+
+            .social-icons a {
+                position: relative;
+                display: block;
+                width: 48px;
+                height: 48px;
+                word-break: break-all;
+            }
+
+            .social-icons  span  {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 40px;
+                height: 40px;
+            }
+
+            .social-icons li:nth-child(2)  span {
+                background-position: -40px 0;
+            }
+
+            .social-icons li:nth-child(3) span {
+                background-position: -88px 0;
+            }
+
+            .social-icons li:nth-child(4) span {
+                background-position: 0 -40px;
+            }
+
+            .social-icons li:nth-child(5) span  {
+                background-position: -40px -40px;
+            }
+
+            .social-icons li:nth-child(6) span  {
+                background-position: -88px -40px;
+            }
+            .icon-bar {
+                position: fixed;
+                top: 50%;
+                -webkit-transform: translateY(-50%);
+                -ms-transform: translateY(-50%);
+                transform: translateY(-50%);
+            }
+
+            /* Style the icon bar links */
+            .icon-bar a {
+                display: block;
+                text-align: center;
+                padding: 10px;
+                transition: all 0.3s ease;
+                color: white;
+                font-size: 10px;
+            }
+
+            /* Style the social media icons with color, if you want */
+            .icon-bar a:hover {
+                background-color: #000;
+            }
+
+            .facebook {
+                background: #3B5998;
+                color: white;
+            }
+
+            .twitter {
+                background: #55ACEE;
+                color: white;
+            }
+
+            .google {
+                background: #dd4b39;
+                color: white;
+            }
+
+            .github {
+                background: #333333;
+                color: white;
+            }
+
+            .instagram {
+                background: #ffffff;
+                color: white;
+            }
+
+            .linkedin {
+                background: #007bb5;
+                color: white;
+            }
+
+            .youtube {
+                background: #bb0000;
+                color: white;
+            }
+        </style>
+        <script>
+
+                // set up hover panels
+                // although this can be done without JavaScript, we've attached these events
+                // because it causes the hover to be triggered when the element is tapped on a touch device
+            var TxtRotate = function(el, toRotate, period) {
+                this.toRotate = toRotate;
+                this.el = el;
+                this.loopNum = 0;
+                this.period = parseInt(period, 10) || 2000;
+                this.txt = '';
+                this.tick();
+                this.isDeleting = false;
+            };
+
+            TxtRotate.prototype.tick = function() {
+                var i = this.loopNum % this.toRotate.length;
+                var fullTxt = this.toRotate[i];
+
+                if (this.isDeleting) {
+                    this.txt = fullTxt.substring(0, this.txt.length - 1);
+                } else {
+                    this.txt = fullTxt.substring(0, this.txt.length + 1);
+                }
+
+                this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+
+                var that = this;
+                var delta = 300 - Math.random() * 100;
+
+                if (this.isDeleting) { delta /= 2; }
+
+                if (!this.isDeleting && this.txt === fullTxt) {
+                    delta = this.period;
+                    this.isDeleting = true;
+                } else if (this.isDeleting && this.txt === '') {
+                    this.isDeleting = false;
+                    this.loopNum++;
+                    delta = 500;
+                }
+
+                setTimeout(function() {
+                    that.tick();
+                }, delta);
+            };
+
+            window.onload = function() {
+                var elements = document.getElementsByClassName('txt-rotate');
+                for (var i=0; i<elements.length; i++) {
+                    var toRotate = elements[i].getAttribute('data-rotate');
+                    var period = elements[i].getAttribute('data-period');
+                    if (toRotate) {
+                        new TxtRotate(elements[i], JSON.parse(toRotate), period);
+                    }
+                }
+
+                var css = document.createElement("style");
+                css.type = "text/css";
+                css.innerHTML = ".txt-rotate > .wrap { border-right: 0.08em solid #666 }";
+                document.body.appendChild(css);
+            }
+        </script>
+        <title></title>
+    </head>
+</head>
+<body>
+<div class="header">
+<ul>
+    <li><a class="active" href="#home">Home</a></li>
+    <li><a href="#news">News</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#about">About</a></li>
+</ul>
+</div>
+
+<div class="wrapper">
+    <img src="https://i.kinja-img.com/gawker-media/image/upload/gd8ljenaeahpn0wslmlz.jpg" class="image--cover">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:200,100,400" rel="stylesheet" type="text/css" />
+    <h1 align="center">Hello,</h1>
+    <h1 align="center">I am
+        <span
+                class="txt-rotate"
+                data-period="2000"
+                data-rotate='[ "Prem Chavhan.","an Android Developer.", "an Web Developer."]'></span>
+    </h1>
+</div>
+
+<h2 style="color:white; text-align:center; margin-bottom: 5px"> My Education</h2>
+
+<div class="wrapper">
+<div class="col_third">
+<div class="hover panel">
+<div class="flip-box">
+    <div class="flip-box-inner">
+        <div id = "box1_1">
+                <img src="Images/institute.png">
+                <h5 style="color:white; text-align:center;">Vishwakarma Institute of Technology,Pune</h5>
+                <p style="color:white; text-align:center;">B.Tech in Computer Engineering</p>
+                <small style="color:white; text-align:center;">2018-Pursuing</small>
+            </div>
+    </div>
+</div>
+</div>
+</div>
+
+
+    <div class="col_third">
+        <div class="hover panel">
+            <div class="flip-box">
+                <div class="flip-box-inner">
+                    <div id = "box1_2">
+                        <img src="Images/institute.png">
+                        <h5 style="color:white; text-align:center;">Government Polytechnix,Jalgaon</h5>
+                            <p style="color:white; text-align:center;">Diploma in Information Technology</p>
+                            <small style="color:white; text-align:center;">2015-2018</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="col_third">
+<div class="hover panel">
+<div class="flip-box">
+    <div class="flip-box-inner">
+        <div id = "box1_3">
+            <img src="Images/institute.png">
+            <h5 style="color:white; text-align:center;">L.N.S Vidyalaya,Jalgaon</h5>
+            <p style="color:white; text-align:center;">SSC Board</p>
+            <small style="color:white; text-align:center;">2014-2015</small>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+<div style="text-align:center; display: block; margin-left: auto; margin-top :20%; margin-right: auto;">
+    <h2 style="color:white; text-align:center;"> My Skills</h2>
+    <h4 style="color:white; margin-top :1%;text-align:center;">Languages</h4>
+    <div class="tooltip">
+        <img src="./Images/java.png" width="50" height="50"  alt="" style="margin-left:2%; margin-top:1%">
+        <span class="tooltiptext">Java</span>
+    </div>
+
+    <div class="tooltip">
+        <img src="./Images/py1.png" width="50" height="50"  alt="" style="margin-left:2%; margin-right:2%; margin-top:1%">
+        <span class="tooltiptext">Python</span>
+    </div>
+
+    <div class="tooltip">
+        <img src="./Images/html.png" width="50" height="50"  alt="" style="margin-left:2%;  margin-right:2%; margin-top:1%">
+        <span class="tooltiptext">Html</span>
+    </div>
+
+    <div class="tooltip">
+        <img src="./Images/css.png" width="50" height="50"  alt="" style="margin-left:2%;  margin-right:2%; margin-top:1%">
+        <span class="tooltiptext">Css</span>
+    </div>
+
+    <div class="tooltip">
+        <img src="./Images/js.png" width="50" height="50"  alt="" style="margin-left:2%;  margin-right:2%; margin-top:1%">
+        <span class="tooltiptext">JavaScript</span>
+    </div>
+
+    <div class="tooltip">
+        <img src="./Images/php.png" width="50" height="50"  alt="" style="margin-left:2%; margin-right:2%;  margin-top:1%">
+        <span class="tooltiptext">Php</span>
+    </div>
+
+    <h4 style="color:white; margin-top :1%;text-align:center;">Technology</h4>
+    <div class="tooltip">
+        <img src="./Images/android.png" width="50" height="50"  alt="" style="margin-left:2%; margin-right:2%;  margin-top:1%">
+        <span class="tooltiptext">Android</span>
+    </div>
+
+    <div class="tooltip">
+        <img src="./Images/tableau.png" width="50" height="50"  alt="" style="margin-left:2%; margin-right:2%;  margin-top:1%">
+        <span class="tooltiptext">Tableau</span>
+    </div>
+
+    <h4 style="color:white; margin-top :1%;text-align:center;">Database</h4>
+    <div class="tooltip">
+        <img src="./Images/firebase.png" width="50" height="50"  alt="" style="margin-left:2%; margin-right:2%;  margin-top:1%">
+        <span class="tooltiptext">Firebase</span>
+    </div>
+
+    <div class="tooltip">
+        <img src="./Images/mysql.png" width="50" height="50"  alt="" style="margin-left:2%; margin-right:2%;  margin-top:1%">
+        <span class="tooltiptext">Mysql</span>
+    </div>
+</div>
+
+<h2 style="color:white; text-align:center; margin-bottom: 5px"> My Projects</h2>
+
+<div class="wrapper">
+    <div class="col_third">
+        <div class="hover panel">
+            <div class="flip-box">
+                <div class="flip-box-inner" style="margin-top: 20px">
+                    <div class = "box1_1" style="margin-top: 20px">
+                        <img src="Images/mock_1.png" width="120" height="200">
+                        <h5 style="color:white; text-align:center;">Mobomart Android App</h5>
+                        <small style="color:white; text-align:center;">This app allows the user to purchase any mobile accessories at less
+                            Cost by doing comparison on various websites.
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col_third">
+        <div class="hover panel">
+            <div class="flip-box">
+                <div class="flip-box-inner" style="margin-top: 20px">
+                    <div class= "box1_2" style="margin-top: 20px">
+                        <img src="Images/mock_2.png" width="120" height="200">
+                        <h5 style="color:white; text-align:center;">Freelancer Portal App</h5>
+                        <small style="color:white; text-align:center;">This app acts like a link between help seeker and freelancer by which
+                            they can communicate with each other and freelancer can work and
+                            Earn some money.
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="col_third">
+    <div class="hover panel">
+        <div class="flip-box">
+            <div class="flip-box-inner" style="margin-top: 20px">
+                <div class = "box1_3" style="margin-top: 20px">
+                    <img src="Images/mock_3.png" width="120" height="200">
+                    <h5 style="color:white; text-align:center;">Stall Management app</h5>
+                    <small style="color:white; text-align:center;">This app allows the farmers to book the stalls from remote place by which they can come and sell vegetables and fruits when there is a market.</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="wrapper">
+    <div class="col_third">
+        <div class="hover panel">
+            <span class="divLeft">
+            <div class="flip-box">
+                <div class="flip-box-inner">
+                    <div class = "box1_1" style="margin-top: 210px">
+                        <img src="Images/mock_4.png" width="120" height="210">
+                        <h5 style="color:white; text-align:center;">Financial Analyzer App</h5>
+                        <small style="color:white; text-align:center;">This app allows the users to monitor their daily expense with data visualization and also provided Credit score generator, Emi calculator and Sip calculator etc.</small>
+                    </div>
+                </div>
+                </div>
+            </span>
+        </div>
+    </div>
+
+
+    <div class="col_third">
+        <div class="hover panel">
+        <span class="divRight">
+        <div class="flip-box">
+            <div class="flip-box-inner">
+                <div class = "box1_3" style="margin-top: 270px">
+                    <img src="Images/mock_5.png" width="220" height="100" style="margin-bottom:50px;">
+                    <h5 style="color:white; text-align:center;">Room Experience VR using Unity</h5>
+                    <small style="color:white; text-align:center;">This app allows user to freely move in room environment and interact with some objects present in room.</small>
+                </div>
+            </div>
+            </div>
+       </span>
+    </div>
+</div>
+
+
+<div class="wrapper">
+    <div class="col_third">
+        <div class="hover panel">
+            <span class="divLeft">
+            <div class="flip-box">
+                <div class="flip-box-inner">
+                    <div class = "box1_1" style="margin-top:50px">
+                        <img src="Images/mock_6.png" width="220" height="100">
+                        <h5 style="color:white; text-align:center;">Corona World Dashboard using Tableau</h5>
+                        <small style="color:white; text-align:center;">This dashboard shows the Ranking of Country in a barchart depending upon Total confirmed cases of corona and also shows maps visualization according to ranking.</small>
+                    </div>
+                </div>
+                </div>
+            </span>
+        </div>
+    </div>
+
+
+<div class="col_third">
+    <div class="hover panel">
+        <span class="divRight">
+        <div class="flip-box">
+            <div class="flip-box-inner" >
+                <div class = "box1_3" style="margin-top: 50px" >
+                    <img src="Images/mock_7.png" width="220" height="100">
+                    <h5 style="color:white; text-align:center;">Corona India Dashboard using Tableau</h5>
+                    <small style="color:white; text-align:center;">This dashboard shows the Ranking of State in a barchart depending upon Total confirmed cases of corona and also shows maps visualization according to ranking.</small>
+                </div>
+            </div>
+        </div>
+       </span>
+    </div>
+</div>
+</div>
+</div>
+
+<div class="icon-bar">
+    <a href="mailto:pc9028723187@gmail.com" class="google"><i class="fa fa-google"></i><img alt="Qries" src="./Images/gmail.png"
+                                                                  width=30" height="30"></a>
+    <a href="https://github.com/premchavhan" class="github"><i class="fa fa-github"></i><img alt="Qries" src="./Images/github.png"
+                                                                 width=30" height="30"></a>
+    </a>
+    <a href="https://www.facebook.com/prem.chavhan.378" class="facebook"><i class="fa fa-facebook"></i><img alt="Qries" src="./Images/facebook.png"
+                                                                    width=30" height="30"></a>
+    <a href="https://twitter.com/premchavhan3" class="twitter"><i class="fa fa-twitter"></i><img alt="Qries" src="./Images/twitter.png"
+                                                                  width=30" height="30"></a>
+    <a href="https://www.instagram.com/premrchavhan/" class="instagram"><i class="fa fa-instagram"></i><img alt="Qries" src="./Images/instagram.png"
+                                                                      width=30" height="30"></a>
+    <a href="https://in.linkedin.com/in/prem-chavhan-6b5b75175" class="linkedin"><i class="fa fa-linkedin"></i><img alt="Qries" src="./Images/linkedin.png"
+                                                                    width=30" height="30"></a>
+    <a href="https://www.youtube.com/channel/UC1K3ewDnCp98fjzIXrvabEA" class="youtube"><i class="fa fa-youtube"></i><img alt="Qries" src="./Images/youtube.png"
+                                                                  width=30" height="30"></a>
+</div>
+</body>
+</html>
