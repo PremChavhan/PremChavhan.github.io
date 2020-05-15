@@ -299,103 +299,118 @@
 
 
         }
-        .social-icons li {
-            display: inline-block;
-            margin-bottom: 5px;
-            vertical-align: middle;
-        }
-
-        .social-icons a {
+        ul{
             position: relative;
-            display: block;
-            width: 48px;
-            height: 48px;
-            word-break: break-all;
+            display: flex;
+            text-align: center;
+            margin: auto;
+            text-align: center;
+            justify-content: center;
+            justify-items: center;
+            justify-self:center ;
         }
 
-        .social-icons  span  {
+        ul li{
+            position: relative;
+            display: grid;
+            color: #666;
+            font-size: 30px;
+            height: 60px;
+            width: 60px;
+            background: #171515;
+            line-height: 60px;
+            border-radius: 50%;
+            margin: 0 15px;
+            cursor: pointer;
+            transition: .5s;
+        }
+        ul li:before{
             position: absolute;
+            content: '';
             top: 0;
             left: 0;
-            width: 40px;
-            height: 40px;
+            height: inherit;
+            width: inherit;
+            /* background: #d35400; */
+            border-radius: 50%;
+            transform: scale(.9);
+            z-index: -1;
+            transition: .5s;
         }
-
-        .social-icons li:nth-child(2)  span {
-            background-position: -40px 0;
-        }
-
-        .social-icons li:nth-child(3) span {
-            background-position: -88px 0;
-        }
-
-        .social-icons li:nth-child(4) span {
-            background-position: 0 -40px;
-        }
-
-        .social-icons li:nth-child(5) span  {
-            background-position: -40px -40px;
-        }
-
-        .social-icons li:nth-child(6) span  {
-            background-position: -88px -40px;
-        }
-        .icon-bar {
-            position: fixed;
-            top: 50%;
-            -webkit-transform: translateY(-50%);
-            -ms-transform: translateY(-50%);
-            transform: translateY(-50%);
-        }
-
-        /* Style the icon bar links */
-        .icon-bar a {
-            display: block;
-            text-align: center;
-            padding: 10px;
-            transition: all 0.3s ease;
-            color: white;
-            font-size: 10px;
-        }
-
-        /* Style the social media icons with color, if you want */
-        .icon-bar a:hover {
-            background-color: #000;
-        }
-
-        .facebook {
-            background: #3B5998;
-            color: white;
-        }
-
-        .twitter {
-            background: #55ACEE;
-            color: white;
-        }
-
-        .google {
-            background: #dd4b39;
-            color: white;
-        }
-
-        .github {
-            background: #333333;
-            color: white;
-        }
-
-        .instagram {
+        ul li:nth-child(1):before{
             background: #ffffff;
-            color: white;
         }
-
-        .linkedin {
-            background: #007bb5;
-            color: white;
+        ul li:nth-child(2):before{
+            background: #ffffff;
         }
-
-        .youtube {
-            background: #bb0000;
-            color: white;
+        ul li:nth-child(3):before{
+            background: #ffffff;
+        }
+        ul li:nth-child(4):before{
+            background: #ffffff;
+        }
+        ul li:nth-child(5):before{
+            background: #ffffff;
+        }
+        ul li:nth-child(6):before{
+            background: #ffffff;
+        }
+        ul li:nth-child(7):before{
+            background: #ffffff;
+        }
+        ul li:hover:before{
+            filter: blur(3px);
+            transform: scale(1.2);
+            /* box-shadow: 0 0 15px #d35400; */
+        }
+        ul li:nth-child(1):hover:before{
+            box-shadow: 0 0 2px #fff;
+        }
+        ul li:nth-child(2):hover:before{
+            box-shadow: 0 0 2px #fff;
+        }
+        ul li:nth-child(3):hover:before{
+            box-shadow: 0 0 2px #fff;
+        }
+        ul li:nth-child(4):hover:before{
+            box-shadow: 0 0 2px #fff;
+        }
+        ul li:nth-child(5):hover:before{
+            box-shadow: 0 0 2px #fff;
+        }
+        ul li:nth-child(6):hover:before{
+            box-shadow: 0 0 2px #fff;
+        }
+        ul li:nth-child(7):hover:before{
+            box-shadow: 0 0 2px #fff;
+        }
+        ul li:nth-child(1):hover{
+            color: #ffffff;
+            box-shadow: 0 0 2px #fff;
+        }
+        ul li:nth-child(2):hover{
+            color: #ffffff;
+            box-shadow: 0 0 2px #fff;
+        }
+        ul li:nth-child(3):hover{
+            color: #ffffff;
+            box-shadow: 0 0 2px #fff;
+        }
+        ul li:nth-child(4):hover{
+            color: #ffffff;
+            box-shadow: 0 0 2px #fff;
+        }
+        ul li:nth-child(5):hover{
+            color: #ffffff;
+            box-shadow: 0 0 2px #fff;
+        }
+        ul li:nth-child(6):hover{
+            color: #ffffff;
+            box-shadow: 0 0 2px #fff;
+        }
+        ul li:nth-child(7):hover{
+            color: #ffffff;
+            box-shadow: 0 0 2px #fff;
         }
 
 
@@ -664,24 +679,32 @@
     </div>
 </section>
 
-<div class="icon-bar">
-    <a href="mailto:pc9028723187@gmail.com" class="google"><i class="fa fa-google"></i><img alt="Qries" src="./Images/gmail.png"
-                                                                                            width=30" height="30"></a>
-    <a href="https://github.com/premchavhan" class="github"><i class="fa fa-github"></i><img alt="Qries" src="./Images/github.png"
-                                                                                             width=30" height="30"></a>
-    </a>
-    <a href="https://www.facebook.com/prem.chavhan.378" class="facebook"><i class="fa fa-facebook"></i><img alt="Qries" src="./Images/facebook.png"
-                                                                                                            width=30" height="30"></a>
-    <a href="https://twitter.com/premchavhan3" class="twitter"><i class="fa fa-twitter"></i><img alt="Qries" src="./Images/twitter.png"
-                                                                                                 width=30" height="30"></a>
-    <a href="https://www.instagram.com/premrchavhan/" class="instagram"><i class="fa fa-instagram"></i><img alt="Qries" src="./Images/instagram.png"
-                                                                                                            width=30" height="30"></a>
-    <a href="https://in.linkedin.com/in/prem-chavhan-6b5b75175" class="linkedin"><i class="fa fa-linkedin"></i><img alt="Qries" src="./Images/linkedin.png"
-                                                                                                                    width=30" height="30"></a>
-    <a href="https://www.youtube.com/channel/UC1K3ewDnCp98fjzIXrvabEA" class="youtube"><i class="fa fa-youtube"></i><img alt="Qries" src="./Images/youtube.png"
-                                                                                                                         width=30" height="30"></a>
-</div>
+<footer>
+    <ul>
+        <li><a href="mailto:pc9028723187@gmail.com"><img alt="Gmail" src="./Images/gmail.png"
+                                                                                          width=30" height="30" style=" margin-bottom: 8px"></a></li>
 
+        <li><a href="https://github.com/premchavhan"><img alt="Github" src="./Images/github.png"
+                                                                                           width=30" height="30" style=" margin-bottom: 8px"></a></li>
+
+        <li><a href="https://www.facebook.com/prem.chavhan.378"><img alt="Facebook" src="./Images/facebook.png"
+                                                                                                      width=30" height="30" style=" margin-bottom: 8px"></a></li>
+
+        <li><a href="https://twitter.com/premchavhan3"><img alt="Twitter" src="./Images/twitter.png"
+                                                                                             width=30" height="30" style=" margin-bottom: 8px"></a></li>
+
+        <li><a href="https://www.instagram.com/premrchavhan/"><img alt="Instagram" src="./Images/instagram.png"
+                                                                                                    width=30" height="30" style=" margin-bottom: 8px"></a></li>
+
+        <li><a href="https://in.linkedin.com/in/prem-chavhan-6b5b75175"><img alt="Linkedin" src="./Images/linkedin.png"
+                                                                                                              width=30" height="30" style=" margin-bottom: 8px"></a></li>
+
+        <li><a href="https://www.youtube.com/channel/UC1K3ewDnCp98fjzIXrvabEA"><img alt="Youtube" src="./Images/youtube.png"
+                                                                                                                     width=30" height="30" style=" margin-bottom: 8px"></a></li>
+    </ul>
+</footer>
+<div style="margin: 20px">
+</div>
 
 </body>
 </html>
